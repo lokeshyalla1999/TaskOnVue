@@ -1,5 +1,4 @@
 import { AllInterFaces } from "@/types/InterfacesTask";
-import { dataState } from "./state";
 
 export const GETTERS = {
     Get_DrawerLinks: 'Get_DrawerLinks',
@@ -11,6 +10,7 @@ export const GETTERS = {
 
 export const getters = {
     [GETTERS.Get_DrawerLinks](dataState:AllInterFaces) {
+        debugger;
         return dataState.links;
     },
     [GETTERS.Get_Option](dataState:AllInterFaces) {

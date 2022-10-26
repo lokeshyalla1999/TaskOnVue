@@ -118,7 +118,7 @@ export default {
     const date = ref<string>("");
     const isPwd = ref<boolean>(false);
     const store = useStore();
-    const options = computed(() => store.getters[`${GETTERS.Get_Option}`]);
+    const options = computed(() => store.getters[`${GETTERS.Get_Gender}`]);
     // const options =ref<labeloptions[]>([
     //   {label : "Male"  , value : "male" , color : "green"},
     //   { label: "Female", value: "female", color: "green" },

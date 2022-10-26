@@ -1,4 +1,3 @@
-import { IColumns, IRows } from "@/types/InterfacesAll"
 import { AllInterFaces } from "@/types/InterfacesTask"
 export const dataState:AllInterFaces = {
   links: [
