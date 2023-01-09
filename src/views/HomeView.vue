@@ -1,5 +1,8 @@
 <template>
   <div class="q-pa-md q-mt-xl  glossy">
+    <div>
+      <q-btn color="primary"   icon="plus" />
+    </div>
     <q-option-group
       v-model="separator"
       inline

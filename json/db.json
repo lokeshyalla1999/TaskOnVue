@@ -1,0 +1,22 @@
+{
+    "Profiles": [
+        {
+            "id" : "1",
+            "name" : "lokesh",
+            "city":"vizag",
+            "department" : "front-end"
+        },
+        {
+            "id" : "2",
+            "name" : "vasavi",
+            "city":"ongole",
+            "department" : "workday"
+        },
+        {
+            "id" : "3",
+            "name" : "pavani",
+            "city":"west godavari",
+            "department" : "front-end"
+        }
+    ]
+}
