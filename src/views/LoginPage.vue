@@ -1,15 +1,8 @@
 <template>
-  <!--We will be talking about encapsulating pages within a q-layout. 
-      The QLayout is a component designed to manage the entire window and wrap page content with elements such as a navigational bar or a drawer -->
   <q-page class="column items-center justify-center">
     <div class="q-pa-md" style="max-width: 400px">
-      <!-- The QCard component is a great way to display important pieces of grouped content. This pattern is quickly emerging as a core design pattern for Apps, website previews and email content -->
       <q-card class="q-pa-lg justify-center">
-        <!-- create form and make the easily validate child form components , it works only in internal components  -->
         <q-form @submit="onSubmit" @reset="onReset('fields are reset')" class="q-gutter-md">
-          <!-- The QInput component is used to capture text input from the user.
-               v-model is used , 
-               Similar  to regular  input  It has support for errors and validation, and comes in a variety of styles, colors, and types. -->
           <q-input
             v-model="email"
             filled
@@ -20,9 +13,6 @@
               (val) => (val && val.length > 0) || 'Please Enter Valid Email',
             ]"
           />
-          <!-- The QInput component is used to capture text input from the user.
-               v-model is used , 
-               Similar  to regular  input  It has support for errors and validation, and comes in a variety of styles, colors, and types. -->
           <q-input
             v-model="password"
             filled
@@ -41,9 +31,7 @@
               />
             </template>
           </q-input>
-          <!-- Quasar has a component called QBtn which is a button with a few extra useful features -->
           <q-btn label="Submit" type="submit" color="primary"  />
-          <!-- Quasar has a component called QBtn which is a button with a few extra useful features -->
           <q-btn
             label="Reset"
             type="reset"

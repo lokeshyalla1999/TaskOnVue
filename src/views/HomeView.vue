@@ -1,13 +1,11 @@
 <template>
-  <div class="q-pa-md q-mt-xl justify-center">
-    <!-- The q-option-group component is a helper component that allows you better control for grouping binary orm input components like checkboxes, radios or toggles. -->
+  <div class="q-pa-md q-mt-xl  glossy">
     <q-option-group
       v-model="separator"
       inline
       class="q-mb-md"
       :options="options"
     />
-    <!-- q-table is a component that allows you to display data in a tabular manner. It’s generally called a datatable. -->
     <q-table
       title="Treats"
       :rows="rows"

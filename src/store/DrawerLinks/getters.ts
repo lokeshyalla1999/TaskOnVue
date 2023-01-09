@@ -10,11 +10,9 @@ export const GETTERS = {
 
 export const getters = {
     [GETTERS.Get_DrawerLinks](dataState:AllInterFaces) {
-        debugger;
         return dataState.links;
     },
     [GETTERS.Get_Option](dataState:AllInterFaces) {
-        debugger;
         return dataState.options;
     },
     [GETTERS.Get_Columns](dataState:AllInterFaces) {
