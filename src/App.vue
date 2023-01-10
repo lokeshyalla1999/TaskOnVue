@@ -28,7 +28,6 @@
       </q-list>
     </q-drawer>
     <router-view />
-    <q-page-container> </q-page-container>
   </q-layout>
 </template>
 

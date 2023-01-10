@@ -2,20 +2,26 @@
     "Profiles": [
         {
             "id" : "1",
-            "name" : "lokesh",
+            "First_Name" : "Lokesh",
+            "Last_Name":"Yalla",
             "city":"vizag",
+            "PhoneNumber":"7214314310",
             "department" : "front-end"
         },
         {
             "id" : "2",
-            "name" : "vasavi",
-            "city":"ongole",
-            "department" : "workday"
+            "First_Name" : "Vasavi",
+            "Last_Name":"Mamidi",
+            "City":"Ongole",
+            "PhoneNumber":"7214314311",
+            "department" : "WorkDay"
         },
         {
             "id" : "3",
-            "name" : "pavani",
-            "city":"west godavari",
+            "First_Name" : "Pavani",
+            "Last_Name":"Mangi",
+            "city":"Godavari",
+            "PhoneNumber":"7214314312",
             "department" : "front-end"
         }
     ]
