@@ -39,6 +39,14 @@
       "City": "ongole",
       "PhoneNumber": "924922324",
       "department": "shop"
+    },
+    {
+      "id": "6",
+      "Frist_Name": "sita",
+      "Last_Name": "yalla",
+      "City": "tuni",
+      "PhoneNumber": "8212210332",
+      "department": "hotel"
     }
   ]
 }

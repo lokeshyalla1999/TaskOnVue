@@ -13,10 +13,4 @@ export const mutations = {
     [MUTATIONS.COMMIT_OPTIONS](dataState:AllInterFaces , options){
         dataState.options = options;
     },
-    [MUTATIONS.COMMIT_COLUMNS](dataState:AllInterFaces , columns){
-        dataState.columns = columns;
-    },
-    [MUTATIONS.COMMIT_ROWS](dataState:AllInterFaces , rows){
-        dataState.rows = rows;
-    }
 }
