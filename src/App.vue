@@ -24,7 +24,7 @@
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-2">
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
-        <DrawerPage />
+          <DrawerPage />
       </q-list>
     </q-drawer>
     <router-view />

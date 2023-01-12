@@ -1,4 +1,5 @@
 <template>
+<div class="background-image">
   <q-page class="column items-center justify-center">
     <div class="q-pa-md" style="max-width: 400px">
       <q-card class="q-pa-lg justify-center">
@@ -43,6 +44,7 @@
       </q-card>
     </div>
   </q-page>
+</div>
 </template>
 
 <script lang="ts">
@@ -95,6 +97,12 @@ export default {
 </script>
 
 <style scoped>
+.background-image{
+  background-image: url("@/assets/images.jfif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .q-pa-lg {
   width: 450px;
 }

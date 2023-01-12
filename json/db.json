@@ -26,23 +26,15 @@
     },
     {
       "id": "4",
-      "Frist_Name": "srinivasarao",
+      "First_Name": "srinivasarao",
       "Last_Name": "yalla",
       "City": "nakkapalle",
       "PhoneNumber": "81234213329",
       "department": "restuarant"
     },
     {
-      "id": "5",
-      "Frist_Name": "yashu",
-      "Last_Name": "mamidi",
-      "City": "ongole",
-      "PhoneNumber": "924922324",
-      "department": "shop"
-    },
-    {
       "id": "6",
-      "Frist_Name": "sita",
+      "First_Name": "sita",
       "Last_Name": "yalla",
       "City": "tuni",
       "PhoneNumber": "8212210332",
