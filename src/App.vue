@@ -6,9 +6,9 @@
           flat
           dense
           round
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          
           aria-label="Menu"
-          icon="menu"
+          icon="home"
         />
         <q-btn
           flat
@@ -21,26 +21,26 @@
         </div>
       </q-toolbar>
     </q-header>
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-2">
+    <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-2"> 
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
           <DrawerPage />
       </q-list>
-    </q-drawer>
+    </q-drawer>-->
     <router-view />
   </q-layout>
 </template>
 
 <script>
 import { ref } from "vue";
-import DrawerPage from "./components/DrawerPage.vue";
+//import DrawerPage from "./components/DrawerPage.vue";
 export default {
     setup() {
         return {
-            leftDrawerOpen: ref(false),
+           // leftDrawerOpen: ref(false),
         };
     },
-    components: { DrawerPage }
+   // components: { DrawerPage }
 };
 </script>
 
