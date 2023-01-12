@@ -143,6 +143,7 @@ export default {
       }
       console.log(data);
       alert("successful")
+      
     }
 
     function onReset() {
