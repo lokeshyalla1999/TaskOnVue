@@ -8,6 +8,7 @@
               ><br />
               <center>
                 <q-input
+                 flat
                   filled
                   type="text"
                   v-model="Profiles.id"
@@ -15,25 +16,33 @@
                   lazy-rules
                   :rules="[
                     (val) => (val && val.length > 0) || 'Please Enter UserId',
+                    (v) =>(v && v.length <= 3) || 'Max 3 number only',
                   ]"
+                  maxlength="4"
                   class="inputbox"
+                  required
                 />
 
                 <q-input
                   filled
+                  flat
                   type="text"
                   v-model="Profiles.First_Name"
                   label="Enter Person First Name *"
                   lazy-rules
                   :rules="[
                     (val) =>
-                      (val && val.length > 0) || 'Please Enter First Name',
+                      (val && val.length > 0) || 'Please Enter First Name', 
+                     (v) =>(v && v.length <= 14) || 'Max 15 char only',
                   ]"
                   class="inputbox"
+                  maxlength="15"
+                  required
                 />
 
                 <q-input
                   filled
+                  flat
                   type="text"
                   v-model="Profiles.Last_Name"
                   label="Enter Person Last Name *"
@@ -41,11 +50,15 @@
                   :rules="[
                     (val) =>
                       (val && val.length > 0) || 'Please Enter Last Name',
+                      (v) =>(v && v.length <= 14) || 'Max 15 char only',
                   ]"
+                  maxlength="15"
                   class="inputbox"
+                  required
                 />
 
                 <q-input
+                  flat
                   filled
                   type="text"
                   v-model="Profiles.City"
@@ -53,11 +66,15 @@
                   lazy-rules
                   :rules="[
                     (val) => (val && val.length > 0) || 'Please Enter City',
+                    (v) =>(v && v.length <= 14) || 'Max 15 char only',
                   ]"
                   class="inputbox"
+                  maxlength="15"
+                  required
                 />
 
                 <q-input
+                  flat
                   filled
                   type="text"
                   v-model="Profiles.PhoneNumber"
@@ -66,11 +83,15 @@
                   :rules="[
                     (val) =>
                       (val && val.length > 0) || 'Please Enter Phone Number',
+                      (v) =>(v && v.length <= 9) || 'Phone contents only 10 numbers',
                   ]"
                   class="inputbox"
+                  maxlength="10"
+                  required
                 />
 
                 <q-input
+                  flat
                   filled
                   type="text"
                   v-model="Profiles.department"
@@ -79,18 +100,22 @@
                   :rules="[
                     (val) =>
                       (val && val.length > 0) || 'Please Enter Department',
+                      (v) =>(v && v.length <= 14) || 'Max 15 char only',
                   ]"
                   class="inputbox"
+                  maxlength="15"
+                  required
                 />
 
                 <div>
                   <center>
                     <q-btn
+                      flat 
                       label="Submit"
                       type="button"
-                      v-on:click="AddProfile"
+                      v-on:click='AddProfile'
                       color="green"
-                    ></q-btn>
+                      ></q-btn>
                     <q-btn
                       label="Reset"
                       type="reset"
@@ -107,16 +132,18 @@
         </q-layout>
       </div>
     </q-page>
-  </div>   
+  </div>
 </template>
 
  <script lang="ts">
 import axios from "axios";
 import { ref } from "vue";
 import router from "@/router";
+
 export default {
   name: "AddProfile",
   setup() {
+    const submitDisable = ref<boolean>(true);
     const Profiles = ref<any>([
       {
         id: ref<string>(""),
@@ -139,11 +166,10 @@ export default {
       if (data.status == 201) {
         router.push({ name: "HomeView" });
       } else {
-        router.push({name:"SignPage"});
+        router.push({ name: "SignPage" });
       }
       console.log(data);
-      alert("successful")
-      
+      alert("successful");
     }
 
     function onReset() {
@@ -154,7 +180,25 @@ export default {
       Profiles.value.PhoneNumber = "";
       Profiles.value.department = " ";
     }
+
+    const submitDisablefunction = () => {
+      if (
+        Profiles.value.id == " " ||
+        Profiles.value.First_Name == " " ||
+        Profiles.value.Last_Name == "" ||
+        Profiles.value.City == " " ||
+        Profiles.value.PhoneNumber == " " ||
+        Profiles.value.department == " "
+      ) {
+        Profiles.value.submitDisable = true;
+      } else {
+        Profiles.value.submitDisable = false;
+      }
+    }
+
     return {
+      submitDisable,
+      submitDisablefunction,
       onReset,
       AddProfile,
       Profiles,
@@ -167,10 +211,11 @@ export default {
   background-image: url("@/assets/images.jfif");
   background-size: cover;
   background-repeat: no-repeat;
+
   background-position: center;
 }
 .inputbox {
-  padding: 5px;
+  padding: 10px;
   width: 350px;
 }
 .totalpage {

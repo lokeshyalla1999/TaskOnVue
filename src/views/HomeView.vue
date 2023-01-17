@@ -2,10 +2,28 @@
   <div class="HomeViewPage">
     <q-page class="column items-center justify-center">
       <div class="q-pa-md PageSizing">
-        <q-layout class="vertical-center">
+        <q-layout class="vertical-center glossy" view="lHh Lpr lFf" >
           <q-card class="q-pa-lg cardstyling">
             <div>
-              <search-component class="searchbar" />
+              <div class="inputseachbar">
+                <!-- <search-component class="searchbar" filter-method="filteredList" /> -->
+                <q-input
+                  standout
+                  bottom-solts
+                  dense
+                  V-model="search"
+                  hide-bottom-space
+                  label="Search"
+                >
+                  <template #append>
+                    <q-icon name="close" class="cursor-pointer" />
+                    <q-icon name="search" />
+                  </template>
+                </q-input>
+              </div>
+              <div class="item error" v-if="search && !filteredList().length">
+                <p>No results found!</p>
+              </div>
               <q-btn
                 color="primary"
                 class="addprofile"
@@ -15,7 +33,11 @@
               />
             </div>
             <div class="cardsizing">
-              <q-card class="cards" v-for="Profile in Profiles" :key="Profile.id">
+              <q-card
+                class="cards"
+                v-for="Profile in Profiles"
+                :key="Profile.id"
+              >
                 <q-img src="">
                   <div class="absolute-bottom">
                     <div>
@@ -25,8 +47,15 @@
                   </div>
                 </q-img>
                 <q-card-actions>
-                  <q-btn flat icon="delete" @click="onDelete(Profile.id)" />
-                  <q-btn flat icon="favorite" />
+                  <q-btn
+                    flat
+                    icon="delete"
+                    @click="onDelete(Profile.id)"
+                    class="btn-delete"
+                  />
+                  <q-btn flat class="btn-color"
+                    ><q-icon name="favorite"
+                  /></q-btn>
                 </q-card-actions>
               </q-card>
             </div>
@@ -41,12 +70,13 @@
 import axios from "axios";
 import { ref } from "vue";
 import router from "@/router";
-import SearchComponent from "@/components/SearchComponent.vue";
+import { IGetData } from "../types/InterfacesAll";
+//import SearchComponent from "@/components/SearchComponent.vue";
 export default {
-  components: { SearchComponent },
+  //components: { SearchComponent },
   setup() {
-    const current = ref(6)
-    const Profiles = ref<any>([]);
+    const Profiles = ref();
+    const search = ref();
     async function GetData() {
       const res = await axios.get("http://localhost:3000/Profiles");
       Profiles.value = res.data;
@@ -68,11 +98,17 @@ export default {
       }
     }
 
+    function filteredList() {
+      console.log(Profiles);
+      return Profiles.value.filter((Profile) =>
+        Profile.toLowerCase().includes(search.value.toLowerCase())
+      );
+    }
     return {
+      filteredList,
       GetData,
       onDelete,
       Profiles,
-      current
     };
   },
   mounted() {
@@ -93,23 +129,48 @@ export default {
 }
 .cardstyling {
   border-radius: 30px;
-  border: 3px solid pink;
+  border: 3px solid rgb(192, 246, 255);
+  background-image: url("@/assets/images.jfif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.searchbar{
-  border-radius:20px;
+.searchbar {
+  border-radius: 20px;
 }
-.addprofile{
-  position:absolute;
-  right:50px;
-  top:45px;
+.addprofile {
+  position: absolute;
+  right: 50px;
+  top: 30px;
   border-radius: 8px;
 }
-.cards{
-  float: left; 
+.cards {
+  float: left;
   width: 290px;
   padding: 10px;
-  margin:6px;
+  margin: 6px;
   border-radius: 10px;
+}
+.btn-color {
+  color: black;
+}
+.btn-color:focus {
+  color: green;
+}
+.btn-color:hover {
+  color: red;
+}
+
+.btn-delete:hover {
+  color: red;
+}
+* {
+  box-sizing: border-box;
+}
+.inputseachbar {
+  width: 400px;
+  border: 1px solid blueviolet;
+  margin-left: 20px;
 }
 </style>
 

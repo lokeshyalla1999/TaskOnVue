@@ -3,5 +3,5 @@ import { IOptions  , Ilabeloptions} from "./InterfacesAll"
 export interface AllInterFaces{
       links : ILinks[],
       options : IOptions[],
-      Gender : Ilabeloptions[],
+      Gender : Ilabeloptions[]
 }

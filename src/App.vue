@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="glossy">
-      <q-toolbar>
+      <q-toolbar class="background">
         <q-btn
           flat
           dense
@@ -48,5 +48,11 @@ export default {
 .buttons{
   position: absolute;
   right: 0px;
+}
+.background{
+  background-image: url("@/assets/images.jfif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 </style>
