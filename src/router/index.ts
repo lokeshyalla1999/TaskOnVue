@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginPage from '../views/LoginPage.vue'
-import SignPage from '../views/SignPage.vue'
 import AddProfile from '../components/AddProfile.vue'
+import cloneProfile from '../components/cloneProfile.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -15,15 +15,16 @@ const routes: Array<RouteRecordRaw> = [
     component:LoginPage
   },
   {
-    path : '/SignPage',
-    name : 'SignPage',
-    component : SignPage
-  },
-  {
     path : '/AddProfile',
     name : 'AddProfile',
     component: AddProfile
   },
+  {
+    path:'/cloneProfile/:id',
+    name : 'cloneProfile',
+    component: cloneProfile
+  }
+
 ]
 
 const router = createRouter({

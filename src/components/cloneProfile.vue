@@ -107,26 +107,6 @@
                   maxlength="15"
                   required
                 />
-
-                <div>
-                  <center>
-                    <q-btn
-                      flat
-                      label="Submit"
-                      type="button"
-                      v-on:click="AddProfile"
-                      color="green"
-                    ></q-btn>
-                    <q-btn
-                      label="Reset"
-                      type="reset"
-                      color="primary"
-                      flat
-                      class="q-ml-sm"
-                      @click="onReset()"
-                    />
-                  </center>
-                </div>
               </center>
             </q-form>
           </q-card>
@@ -135,93 +115,37 @@
     </q-page>
   </div>
 </template>
-
- <script lang="ts">
-import axios from "axios";
-import { onMounted, ref } from "vue";
-import router from "@/router";
-import { valueToNode } from "@babel/types";
-
-export default {
-  name: "AddProfile",
-  setup() {
-    const submitDisable = ref<boolean>(true);
-    const Profiles = ref<any>([
-      {
-        id: ref<string>(""),
-        First_Name: ref<string>(""),
-        Last_Name: ref<string>(""),
-        City: ref<string>(""),
-        PhoneNumber: ref<string>(""),
-        department: ref<string>(""),
-      },
-    ]);
-    async function AddProfile() {
-      const data = await axios.post("http://localhost:3000/Profiles", {
-        id: Profiles.value.id,
-        First_Name: Profiles.value.First_Name,
-        Last_Name: Profiles.value.Last_Name,
-        City: Profiles.value.City,
-        PhoneNumber: Profiles.value.PhoneNumber,
-        department: Profiles.value.department,
-      });
-      if (data.status == 201) {
-        router.push({ name: "HomeView" });
-      } else {
-        router.push({ name: "SignPage" });
-      }
-      console.log(data);
-      alert("successful");
-    }
-
-    function onReset() {
-      Profiles.value.id = " ";
-      Profiles.value.First_Name = " ";
-      Profiles.value.Last_Name = " ";
-      Profiles.value.City = "";
-      Profiles.value.PhoneNumber = "";
-      Profiles.value.department = " ";
-    }
-
-    const submitDisablefunction = () => {
-      if (
-        Profiles.value.id == " " ||
-        Profiles.value.First_Name == " " ||
-        Profiles.value.Last_Name == "" ||
-        Profiles.value.City == " " ||
-        Profiles.value.PhoneNumber == " " ||
-        Profiles.value.department == " "
-      ) {
-        Profiles.value.submitDisable = true;
-      } else {
-        Profiles.value.submitDisable = false;
-      }
-    }
-
-    // async function GetData() {
-    //   const res = await axios.get("http://localhost:3000/Profiles/" + Profiles.value.First_Name);
-    //   Profiles.value = res.data;
-    //   console.log(Profiles.value);
-    // }
-
-    // onMounted(() => {
-    //   // const result = axios.get("http://localhost:3000/Profiles");{ 
-    //   // Profiles.value = result;
-    //   // }
-    //   GetData();
-    // })
-
-    return {
-      submitDisable,
-      submitDisablefunction,
-      onReset,
-      AddProfile,
-      Profiles,
-    };
-  },
-};
-</script>
-<style scoped>
+  
+   <script lang="ts">
+  import axios from "axios";
+  import { ref } from "vue";
+  
+  export default {
+    name: "cloneProfile",
+    setup() {
+      const Profiles = ref<any>([
+        {
+          id: ref<string>(""),
+          First_Name: ref<string>(""),
+          Last_Name: ref<string>(""),
+          City: ref<string>(""),
+          PhoneNumber: ref<string>(""),
+          department: ref<string>(""),
+        },
+      ]);
+      return {
+        Profiles,
+      };
+    },
+    async mounted() {
+    const result = await axios.get(
+      "http://localhost:3000/Profiles/" + this.$route.params.id
+    );
+    console.warn(result.data);
+    this.Profiles = result.data;
+}  };
+  </script>
+  <style scoped>
 .background-image {
   background-image: url("@/assets/images.jfif");
   background-size: cover;
